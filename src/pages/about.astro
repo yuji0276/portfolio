@@ -14,18 +14,25 @@ import { Image } from "astro:assets";
 	</head>
 	<body>
 		<Header />
-		<div style="padding: 10rem;">
-		<div >
-			<Image src={profileIcon} width={200} height={200}  alt="icon">
-		</div>
-		<p>kmy(かみー)</p>
-		<h3 style="padding: 1rem;">本サイトについて</h3>
-		<p>本サイトはしがない数学科のブログです。</p>
-		<p>高校時代にノートパソコンを買ってもらったことがきっかけでプログラミングに興味を持ちました。小さな挫折と成功を繰り返してちょっとずつ進化していけたらいいなと思っています</p>
-		<p>将来エンジニアになりたいと思っていますが、具体的な分野は考え中です</p>
+		<h2 style="font-weight: bold; margin-left: 25rem; margin-right: 25rem; padding:1rem; border-bottom: 1px solid #E6E7EB;">About</h2>
+		<div style="margin-left: 25rem; margin-right: 25rem; margin-top: 5rem; display:flex; gap:10rem; ">
+			<div style="display: flex; flex-direction: column; align-items: center;">
+				<Image src={profileIcon} width={400} height={400}  alt="icon" />
+				<p style="font-weight: bold;">kmy(かみー)</p>
+			</div>
+			<div>
+				<h3 style="padding: 1rem;">本サイトについて</h3>
+				<p>本サイトはしがない数学科が運営しているブログです。</p>
+				<p>プログラミング歴一年ほどの初心者が本などで得た知識を置いておく備忘録にするつもりです。自分の得た知識が皆さんの糧になってくれたら嬉しいです</p>
+				<p>高校時代に両親からノートパソコンを買ってもらったことがきっかけでプログラミングに興味を持ちました。小さな挫折と成功を繰り返してちょっとずつ進化していけたらいいなと思っています</p>
+				<h3 style="padding: 1rem">その他</h3>
+				<ul>
+				<li>大阪公立大学理学部数学科</li>
+				<li>大阪公立大学プログラミングサークル　Code Gate?所属</li>
+
+				</ul>
+			</div>
 		</div>
 		<Footer />
 	</body>
 </html>
-
-
