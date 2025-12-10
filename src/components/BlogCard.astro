@@ -1,0 +1,82 @@
+---
+import FormattedDate from "./FormattedDate.astro"
+
+interface Props {
+    link: string
+    title: string
+    date: Date
+}
+const {link, title, date} = Astro.props
+
+---
+
+        <li class="blog-card-item">
+            <a href={`/blog/${link}/`} class="blog-card-link">
+                <h4 class="title">{title}</h4>
+                <div style="display: flex; align-items: center; ;">
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    <p class="blog-card-date">
+                        <FormattedDate date={date} />
+                    </p>
+                </div>
+            </a>
+        </li>
+
+<style>
+    /* ここにCSSを記述します */
+    .blog-card-item {
+        /* リストの点や余白をリセット */
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .blog-card-link {
+        display: block; /* カード全体をリンクにする */
+        padding: 0.5rem 1.5rem; /* 内側の余白 */
+        border-radius: 8px; /* 角を丸くする */
+        background-color: var(--card-bg, #ffffff); /* 背景色 */
+        border: 1px solid var(--border-color, #e0e0e0); /* 枠線 */
+        text-decoration: none; /* 下線をなくす */
+        color: var(--text-color, #333333); /* 基本の文字色 */
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* ホバーアニメーション */
+        
+        /* 影を追加して浮遊感を出す */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+        /* Flexboxでタイトルと日付の配置を調整 */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* 上下でスペースを均等に */
+        height: 100%; /* 親要素の高さに合わせる（Flexコンテナの場合） */
+    }
+
+    .blog-card-link:hover {
+        transform: translateY(-5px); /* 少し上に浮き上がる */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* 影を濃くする */
+        border-color: var(--primary-color, #007bff); /* ホバー時に枠線の色を変える */
+    }
+
+    .blog-card-title {
+        font-size: 1.3rem;
+        font-weight: 700; /* 太字 */
+        margin-top: 0;
+        margin-bottom: 0.8rem; /* 日付との間に余白 */
+        color: var(--heading-color, #222222); /* 見出しの色 */
+        line-height: 1.4;
+    }
+
+.blog-card-date {
+    font-size: 1rem;
+    color: var(--date-color, #555555);
+    display: flex; /* アイコンとテキストを縦方向で揃える */
+    align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* アイコン自体のスタイル */
+.fas {
+    color: var(--icon-color, #007bff); /* アイコンの色 */
+    margin-right: 10px; /* アイコンと日付の間に余白 */
+    font-size: 1.2rem; /* アイコンのサイズ */
+}
+</style>
