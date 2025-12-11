@@ -11,24 +11,47 @@ import { Image } from "astro:assets";
 <html lang="ja">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			h2 {
+				font-weight: bold;
+				margin-left: 25rem;
+				margin-right: 25rem;
+				padding: 1rem;
+				border-bottom: 1px solid #E6E7EB;
+			}
+			h3 {
+				font-weight: bold;
+				padding: 1rem 0 0.5rem 0;
+			}
+			.page-layout {
+				margin: 5rem 25rem 0;
+				display: flex;
+				gap: 10rem;
+			}
+			.icon-container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
-		<h2 style="font-weight: bold; margin-left: 25rem; margin-right: 25rem; padding:1rem; border-bottom: 1px solid #E6E7EB;">About</h2>
-		<div style="margin-left: 25rem; margin-right: 25rem; margin-top: 5rem; display:flex; gap:10rem; ">
-			<div style="display: flex; flex-direction: column; align-items: center;">
+		<h2>About</h2>
+		<div class="page-layout">
+			<div class="icon-container">
 				<Image src={profileIcon} width={400} height={400}  alt="icon" />
 				<p style="font-weight: bold;">kmy(かみー)</p>
 			</div>
 			<div>
-				<h3 style="padding: 1rem;">本サイトについて</h3>
+				<h3>本サイトについて</h3>
 				<p>本サイトはしがない数学科が運営しているブログです。</p>
 				<p>プログラミング歴一年ほどの初心者が本などで得た知識を置いておく備忘録にするつもりです。自分の得た知識が皆さんの糧になってくれたら嬉しいです</p>
 				<p>高校時代に両親からノートパソコンを買ってもらったことがきっかけでプログラミングに興味を持ちました。小さな挫折と成功を繰り返してちょっとずつ進化していけたらいいなと思っています</p>
-				<h3 style="padding: 1rem">その他</h3>
+				<h3>その他</h3>
 				<ul>
 				<li>大阪公立大学理学部数学科</li>
-				<li>大阪公立大学プログラミングサークル　Code Gate?所属</li>
+				<li>大阪公立大学プログラミングサークル Code Gate?所属</li>
 
 				</ul>
 			</div>
