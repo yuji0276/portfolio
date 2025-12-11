@@ -16,11 +16,15 @@
 ``` bash
 git clone https://github.com/yuji0276/portfolio.git
 ```
-2. 依存関係をインストール
+2. ディレクトリ移動
+``` bash
+cd portfolio
+```
+3. 依存関係をインストール
 ``` bash
 npm install
 ```
-3. アプリケーションを起動
+4. アプリケーションを起動
 ``` bash
 npm run dev
 ```
