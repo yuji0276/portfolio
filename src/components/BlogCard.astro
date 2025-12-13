@@ -1,0 +1,86 @@
+---
+import FormattedDate from "./FormattedDate.astro"
+
+interface Props {
+    link: string
+    title: string
+    date: Date
+}
+const {link, title, date} = Astro.props
+
+---
+
+<li class="blog-card-item">
+    <a href={`/blog/${link}/`} class="blog-card-link">
+        <h4 class="blog-card-title">{title}</h4>
+        <div class="blog-card-date-container">
+            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+            <p class="blog-card-date-text">
+                <FormattedDate date={date} />
+            </p>
+        </div>
+            </a>
+</li>
+
+<style>
+
+    .blog-card-item {
+        list-style: none;
+        margin: 0;
+        padding: 0.2rem;
+    }
+
+.blog-card-link {
+        display: block; 
+        padding: 1.5rem;
+
+        border-radius: 8px; 
+        background-color: var(--card-bg, #ffffff); 
+        border: 1px solid var(--border-color, #e0e0e0); 
+        text-decoration: none; 
+        color: var(--text-color, #333333); 
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; 
+        
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    .blog-card-link:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-color: var(--primary-color, #007bff);
+    }
+
+    .blog-card-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+        color: var(--heading-color, #222222);
+        line-height: 1.4;
+    }
+    .blog-card-date-container {
+        font-size: 1rem;
+        color: var(--date-color, #555555);
+        display: flex;
+        align-items: center;
+        margin-top: auto;
+    }
+    .blog-card-date-text {
+        margin: 0; /* <p>タグのデフォルトマージンをリセット */
+    }
+    .blog-card-date {
+        font-size: 1rem;
+        color: var(--date-color, #555555);
+        display: flex;
+        align-items: center;
+    }
+    .fas {
+        color: var(--icon-color, #007bff);
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+</style>
