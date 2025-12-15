@@ -5,6 +5,7 @@ import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 import BlogCard from "../../components/BlogCard.astro";
+import Tags from "../../components/Tags.astro";
 
 const posts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -15,22 +16,40 @@ const posts = (await getCollection("blog")).sort(
 <html lang="ja">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.content-grid {
+				display: grid;
+				grid-template-columns: 200px 1fr;
+				gap: 0rem;
+				align-items: start;
+			}
+			@media (max-width: 768px) {
+				.content-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<ul>
-				{
-					posts.map((post) => (
-						<BlogCard
-							link={post.id}
-							title={post.data.title}
-							date={post.data.pubDate}
-							tags={post.data.tags}
-						/>
-					))
-				}
-			</ul>
+			<div class="content-grid">
+				<aside>
+					<Tags />
+				</aside>
+				<ul>
+					{
+						posts.map((post) => (
+							<BlogCard
+								link={post.id}
+								title={post.data.title}
+								date={post.data.pubDate}
+								tags={post.data.tags}
+							/>
+						))
+					}
+				</ul>
+			</div>
 		</main>
 		<Footer />
 	</body>

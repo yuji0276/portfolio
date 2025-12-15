@@ -1,0 +1,84 @@
+---
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import Tags from "../../components/Tags.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+
+export async function getStaticPaths() {
+    const allPosts = await getCollection("blog");
+    const uniqueTags = [
+        ...new Set(allPosts.map((post) => post.data.tags).flat()),
+    ];
+
+    return uniqueTags.map((tag) => {
+        const filteredPosts = allPosts
+            .filter((post) => post.data.tags.includes(tag))
+            .sort(
+                (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+            );
+        return {
+            params: { tag },
+            props: { posts: filteredPosts },
+        };
+    });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+    <head>
+        <BaseHead
+            title={`${tag} - ${SITE_TITLE}`}
+            description={SITE_DESCRIPTION}
+        />
+        <style>
+            .content-grid {
+                display: grid;
+                grid-template-columns: 240px 1fr;
+                gap: 2rem;
+                align-items: start;
+            }
+            @media (max-width: 768px) {
+                .content-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <div class="content-grid">
+                <aside>
+                    <Tags />
+                </aside>
+                <div class="content">
+                    <h2 style="margin-bottom: 2rem;">
+                        Posts tagged with <span style="color: var(--accent);"
+                            >#{tag}</span
+                        >
+                    </h2>
+                    <ul>
+                        {
+                            posts.map((post) => (
+                                <BlogCard
+                                    link={post.id}
+                                    title={post.data.title}
+                                    date={post.data.pubDate}
+                                    tags={post.data.tags}
+                                />
+                            ))
+                        }
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <Footer />
+    </body>
+</html>
