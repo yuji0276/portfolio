@@ -59,11 +59,6 @@ const { posts } = Astro.props;
                     <Tags />
                 </aside>
                 <div class="content">
-                    <h2 style="margin-bottom: 2rem;">
-                        Posts tagged with <span style="color: var(--accent);"
-                            >#{tag}</span
-                        >
-                    </h2>
                     <ul>
                         {
                             posts.map((post) => (
