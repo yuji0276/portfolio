@@ -1,52 +1,57 @@
 ---
-import FormattedDate from "./FormattedDate.astro"
+import FormattedDate from "./FormattedDate.astro";
 
 interface Props {
-    link: string
-    title: string
-    date: Date
+    link: string;
+    title: string;
+    date: Date;
+    tags: string[];
 }
-const {link, title, date} = Astro.props
-
+const { link, title, date, tags } = Astro.props;
 ---
 
 <li class="blog-card-item">
     <a href={`/blog/${link}/`} class="blog-card-link">
         <h4 class="blog-card-title">{title}</h4>
+        <div class="tags">
+            {tags.map((tag) => <span class="tag">#{tag}</span>)}
+        </div>
         <div class="blog-card-date-container">
             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
             <p class="blog-card-date-text">
                 <FormattedDate date={date} />
             </p>
         </div>
-            </a>
+    </a>
 </li>
 
 <style>
-
     .blog-card-item {
         list-style: none;
         margin: 0;
         padding: 0.2rem;
     }
 
-.blog-card-link {
-        display: block; 
+    .blog-card-link {
+        display: block;
         padding: 1.5rem;
 
-        border-radius: 8px; 
-        background-color: var(--card-bg, #ffffff); 
-        border: 1px solid var(--border-color, #e0e0e0); 
-        text-decoration: none; 
-        color: var(--text-color, #333333); 
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; 
-        
+        border-radius: 8px;
+        background-color: var(--card-bg, #ffffff);
+        border: 1px solid var(--border-color, #e0e0e0);
+        text-decoration: none;
+        color: var(--text-color, #333333);
+        transition:
+            transform 0.2s ease-in-out,
+            box-shadow 0.2s ease-in-out;
+
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
+        position: relative;
     }
 
     .blog-card-link:hover {
@@ -61,6 +66,7 @@ const {link, title, date} = Astro.props
         margin-bottom: 0.8rem;
         color: var(--heading-color, #222222);
         line-height: 1.4;
+        padding-right: 2rem;
     }
     .blog-card-date-container {
         font-size: 1rem;
@@ -70,7 +76,7 @@ const {link, title, date} = Astro.props
         margin-top: auto;
     }
     .blog-card-date-text {
-        margin: 0; /* <p>タグのデフォルトマージンをリセット */
+        margin: 0;
     }
     .blog-card-date {
         font-size: 1rem;
@@ -82,5 +88,23 @@ const {link, title, date} = Astro.props
         color: var(--icon-color, #007bff);
         margin-right: 10px;
         font-size: 1.2rem;
+    }
+    .tags {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        gap: 0.4rem;
+        z-index: 1;
+    }
+    .tag {
+        font-size: 0.8rem;
+        font-weight: 60;
+        color: #ffffff;
+        background-color: var(--accent);
+        padding: 0.25rem 0.6rem;
+        border-radius: 9999px;
+        line-height: 1;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 </style>
