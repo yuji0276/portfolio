@@ -1,12 +1,13 @@
 ---
-import Header from "../components/Header.astro"
-import Footer from "../components/Footer.astro"
-import BaseHead from "../components/BaseHead.astro"
-import { SITE_TITLE } from "../consts"
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import BaseHead from "../components/BaseHead.astro";
+import { SITE_TITLE } from "../consts";
 import { SITE_DESCRIPTION } from "../consts";
-import profileIcon from '../assets/profile-icon.png'
+import profileIcon from "../assets/profile-icon.png";
 import { Image } from "astro:assets";
 ---
+
 <!doctype html>
 <html lang="ja">
 	<head>
@@ -16,13 +17,13 @@ import { Image } from "astro:assets";
 				font-weight: bold;
 				margin: 0 25rem;
 				padding: 1rem;
-				border-bottom: 1px solid #E6E7EB;
+				border-bottom: 1px solid #e6e7eb;
 			}
 			h3 {
 				font-weight: bold;
 				padding: 1rem 0 0.5rem 0;
 			}
-			p {
+			.auther {
 				font-weight: bold;
 			}
 			.page-layout {
@@ -42,18 +43,22 @@ import { Image } from "astro:assets";
 		<h2>About</h2>
 		<div class="page-layout">
 			<div class="icon-container">
-				<Image src={profileIcon} width={400} height={400}  alt="icon" />
-				<p>kmy(かみー)</p>
+				<Image src={profileIcon} width={400} height={400} alt="icon" />
+				<p class="auther">kmy(かみー)</p>
 			</div>
 			<div>
 				<h3>本サイトについて</h3>
 				<p>本サイトはしがない数学科が運営しているブログです。</p>
-				<p>プログラミング歴一年ほどの初心者が本などで得た知識を置いておく備忘録にするつもりです。自分の得た知識が皆さんの糧になってくれたら嬉しいです</p>
-				<p>高校時代に両親からノートパソコンを買ってもらったことがきっかけでプログラミングに興味を持ちました。小さな挫折と成功を繰り返してちょっとずつ進化していけたらいいなと思っています</p>
+				<p>
+					プログラミング歴一年ほどの初心者が本などで得た知識を置いておく備忘録にするつもりです。自分の得た知識が皆さんの糧になってくれたら嬉しいです
+				</p>
+				<p>
+					高校時代に両親からノートパソコンを買ってもらったことがきっかけでプログラミングに興味を持ちました。小さな挫折と成功を繰り返してちょっとずつ進化していけたらいいなと思っています
+				</p>
 				<h3>その他</h3>
 				<ul>
-				<li>大阪公立大学理学部数学科</li>
-				<li>大阪公立大学プログラミングサークル Code Gate?所属</li>
+					<li>大阪公立大学理学部数学科</li>
+					<li>大阪公立大学プログラミングサークル Code Gate?所属</li>
 				</ul>
 			</div>
 		</div>
