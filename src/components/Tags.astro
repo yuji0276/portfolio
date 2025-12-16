@@ -10,11 +10,11 @@ const currentTag = Astro.params.tag;
     {
         tags.map((tag) =>
             currentTag === tag ? (
-                <a href={`/blog/${tag}`} class="filtered-tag">
+                <a href={`/blog/tag/${tag}`} class="filtered-tag">
                     #{tag}
                 </a>
             ) : (
-                <a href={`/blog/${tag}`} class="tag">
+                <a href={`/blog/tag/${tag}`} class="tag">
                     #{tag}
                 </a>
             ),
