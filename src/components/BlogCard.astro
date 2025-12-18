@@ -28,12 +28,13 @@ const { link, title, date, tags } = Astro.props;
 <style>
     .blog-card-item {
         list-style: none;
+
         margin: 0;
-        padding: 0.2rem;
+        padding: 0.2rem 0.1rem;
     }
 
     .blog-card-link {
-        display: block;
+        /* display: block; - Removed duplicate */
         padding: 1.5rem;
 
         border-radius: 8px;
@@ -106,5 +107,31 @@ const { link, title, date, tags } = Astro.props;
         border-radius: 9999px;
         line-height: 1;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 720px) {
+        .blog-card-item {
+            display: flex;
+            justify-content: center;
+            padding: 0.5rem 0;
+            width: 100%; /* Ensure item takes full width of container */
+        }
+        .blog-card-link {
+            padding: 1rem; /* Reduce padding */
+            width: 95%; /* Use almost full width but leave some margin for centering effect */
+            max-width: 400px; /* Optional: limit max width for better readability on larger mobile screens */
+        }
+        .blog-card-title {
+            font-size: 1.1rem;
+            padding-right: 0; /* Remove right padding as tags will move */
+            margin-bottom: 0.5rem;
+        }
+        .tags {
+            position: relative; /* Move into flow */
+            top: auto;
+            right: auto;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
     }
 </style>
