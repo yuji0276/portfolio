@@ -136,7 +136,7 @@ hr {
 		font-size: 18px;
 	}
 	main {
-		padding: 1em 0.5em; /* Reduce horizontal padding on mobile */
+		padding: 1em;
 	}
 }
 

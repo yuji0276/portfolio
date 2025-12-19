@@ -36,18 +36,18 @@ import { Image } from "astro:assets";
 				flex-direction: column;
 				align-items: center;
 			}
-			@media (max-width: 720px) {
+			@media (max-width: 768px) {
 				h2 {
 					margin: 0 1rem;
 				}
 				.page-layout {
-					margin: 2rem 1rem;
+					margin: 2rem 1rem 0;
 					flex-direction: column;
 					gap: 2rem;
 				}
-				.profile-icon {
+				.icon-container img {
 					width: 200px;
-					height: 200px;
+					height: auto;
 				}
 			}
 		</style>
@@ -57,13 +57,7 @@ import { Image } from "astro:assets";
 		<h2>About</h2>
 		<div class="page-layout">
 			<div class="icon-container">
-				<Image
-					src={profileIcon}
-					width={400}
-					height={400}
-					alt="icon"
-					class="profile-icon"
-				/>
+				<Image src={profileIcon} width={400} height={400} alt="icon" />
 				<p class="auther">kmy(かみー)</p>
 			</div>
 			<div>

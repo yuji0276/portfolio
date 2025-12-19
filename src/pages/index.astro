@@ -14,24 +14,44 @@ const posts = (await getCollection("blog")).sort(
 <html lang="ja">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.content-grid {
+				display: grid;
+				grid-template-columns: 200px 1fr;
+				gap: 0rem;
+				align-items: start;
+			}
+			.content-grid ul {
+				padding: 0;
+				margin: 0;
+				list-style: none; /* Ensure no bullets */
+			}
+			@media (max-width: 768px) {
+				.content-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
 			<h1>kmy blog</h1>
 			<p>学習したことや、制作したものなどを備忘録として残すブログです</p>
-			<ul>
-				{
-					posts.map((post) => (
-						<BlogCard
-							link={post.id}
-							title={post.data.title}
-							date={post.data.pubDate}
-							tags={post.data.tags}
-						/>
-					))
-				}
-			</ul>
+			<div class="content-grid">
+				<ul>
+					{
+						posts.map((post) => (
+							<BlogCard
+								link={post.id}
+								title={post.data.title}
+								date={post.data.pubDate}
+								tags={post.data.tags}
+							/>
+						))
+					}
+				</ul>
+			</div>
 		</main>
 		<Footer />
 	</body>
