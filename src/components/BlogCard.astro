@@ -12,10 +12,10 @@ const { link, title, date, tags } = Astro.props;
 
 <li class="blog-card-item">
     <a href={`/blog/${link}/`} class="blog-card-link">
-        <h4 class="blog-card-title">{title}</h4>
         <div class="tags">
             {tags.map((tag) => <span class="tag">#{tag}</span>)}
         </div>
+        <h4 class="blog-card-title">{title}</h4>
         <div class="blog-card-date-container">
             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
             <p class="blog-card-date-text">
@@ -66,7 +66,6 @@ const { link, title, date, tags } = Astro.props;
         margin-bottom: 0.8rem;
         color: var(--heading-color, #222222);
         line-height: 1.4;
-        padding-right: 2rem;
     }
     .blog-card-date-container {
         font-size: 1rem;
@@ -90,12 +89,10 @@ const { link, title, date, tags } = Astro.props;
         font-size: 1.2rem;
     }
     .tags {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
         display: flex;
+        flex-wrap: wrap;
         gap: 0.4rem;
-        z-index: 1;
+        margin-bottom: 0.5rem;
     }
     .tag {
         font-size: 0.8rem;

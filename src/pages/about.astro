@@ -15,7 +15,7 @@ import { Image } from "astro:assets";
 		<style>
 			h2 {
 				font-weight: bold;
-				margin: 0 25rem;
+				margin: 0 20vw;
 				padding: 1rem;
 				border-bottom: 1px solid #e6e7eb;
 			}
@@ -25,9 +25,10 @@ import { Image } from "astro:assets";
 			}
 			.auther {
 				font-weight: bold;
+				white-space: nowrap;
 			}
 			.page-layout {
-				margin: 5rem 25rem 0;
+				margin: 5rem 20vw 0;
 				display: flex;
 				gap: 10rem;
 			}
@@ -35,6 +36,20 @@ import { Image } from "astro:assets";
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+			}
+			@media (max-width: 768px) {
+				h2 {
+					margin: 0 1rem;
+				}
+				.page-layout {
+					margin: 2rem 1rem 0;
+					flex-direction: column;
+					gap: 2rem;
+				}
+				.icon-container img {
+					width: 200px;
+					height: auto;
+				}
 			}
 		</style>
 	</head>
