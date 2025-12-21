@@ -17,14 +17,14 @@ const posts = (await getCollection("blog")).sort(
 		<style>
 			.content-grid {
 				display: grid;
-				grid-template-columns: 200px 1fr;
+
 				gap: 0rem;
 				align-items: start;
 			}
 			.content-grid ul {
 				padding: 0;
 				margin: 0;
-				list-style: none; /* Ensure no bullets */
+				list-style: none;
 			}
 			@media (max-width: 768px) {
 				.content-grid {
