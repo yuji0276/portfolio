@@ -8,4 +8,5 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
 	site: 'https://yuji0276.github.io',
 	integrations: [mdx(), sitemap()],
+	base: '/',
 });
